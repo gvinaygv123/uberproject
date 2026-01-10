@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/G VINAY/OneDrive/Pictures/Desktop\uber.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1500"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="uber_requests" custom_title="0" dock_id="2" table="4,13:mainuber_requests"/><dock_state state="000000ff00000000fd00000001000000020000043b000002aefc0100000002fb000000160064006f0063006b00420072006f00770073006500310100000000ffffffff0000000000000000fb000000160064006f0063006b00420072006f007700730065003201000000000000043b0000011800ffffff000002580000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">PRAGMA table_info(uber_requests);
+</sql><sql name="SQL 3">SELECT Status, COUNT(*) AS count
+FROM uber_requests
+GROUP BY Status;
+</sql><sql name="SQL 4">SELECT COUNT(*) AS supply_gap
+FROM uber_requests
+WHERE status IN ('Cancelled', 'No Cars Available');
+</sql><sql name="SQL 5">SELECT &quot;Time Solt&quot;, COUNT(*) AS gap_count
+FROM uber_requests
+WHERE status IN ('Cancelled', 'No Cars Available')
+GROUP BY &quot;Time Solt&quot;
+ORDER BY gap_count DESC;
+</sql><sql name="SQL 6">SELECT &quot;Pickup point&quot;, COUNT(*) AS gap_count
+FROM uber_requests
+WHERE status IN ('Cancelled', 'No Cars Available')
+GROUP BY &quot;Pickup point&quot;;
+</sql><sql name="SQL 7">SELECT &quot;time_slot&quot;, COUNT(*) AS cancelled_count
+FROM uber_requests
+WHERE status = 'Cancelled'
+GROUP BY &quot;time_slot&quot;
+ORDER BY cancelled_count DESC;
+</sql><sql name="SQL 8">SELECT &quot;time_slot&quot;, COUNT(*) AS no_car_count
+FROM uber_requests
+WHERE status = 'No Cars Available'
+GROUP BY &quot;time_slot&quot;
+ORDER BY no_car_count DESC;
+</sql><sql name="SQL 9">SELECT &quot;Request Hour&quot;, COUNT(*) AS gap_count
+FROM uber_requests
+WHERE status IN ('Cancelled', 'No Cars Available')
+GROUP BY &quot;Request Hour&quot;
+ORDER BY &quot;Request Hour&quot;;
+</sql><sql name="SQL 10">SELECT &quot;Time Solt&quot;, COUNT(*) AS gap_count
+FROM uber_requests
+WHERE status IN ('Cancelled', 'No Cars Available')
+  AND &quot;Pickup point&quot; = 'Airport'
+GROUP BY &quot;Time Solt&quot;
+ORDER BY gap_count DESC;
+</sql><sql name="SQL 11">SELECT &quot;Time Solt&quot;, COUNT(*) AS gap_count
+FROM uber_requests
+WHERE status IN ('Cancelled', 'No Cars Available')
+  AND &quot;Pickup point&quot; = 'City'
+GROUP BY &quot;Time Solt&quot;
+ORDER BY gap_count DESC;
+</sql><current_tab id="0"/></tab_sql></sqlb_project>
